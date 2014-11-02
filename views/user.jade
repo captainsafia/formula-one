@@ -1,0 +1,12 @@
+html
+  head
+    title #{person.user.name}
+    link(rel="stylesheet", href="stylesheets/foundation.min.css")
+  body
+    h1 #{person.user.name}
+    p  #{person.user.email} 
+    p #{person.user.year}
+    p #{person.user.major}
+    a(href="#{person.filepicker}") Resume
+    
+    

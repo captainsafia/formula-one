@@ -10,3 +10,7 @@ var schema = mongoose.Schema({
     trim: true
   }
 });
+
+var Resume =  mongoose.model('Resume', schema);
+
+module.exports = Resume;

@@ -3,26 +3,28 @@ var mongoose = require("mongoose");
 var schema = mongoose.Schema({
   name: {
     type: String,
-    trim: true
-    match: "/^[a-z ,.'-]+$/i'"
-  }
+    trim: true,
+    required: true
+  },
   email: {
     type: String,
-    match: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$'
     trim: true
-  }
+  },
   year: {
     type: String,
     trim: true,
     enum: 'Freshman Sophomore Junior Senior Graduate'.split(' ')
-  }
-  major: {
+  },
+  university: {
     type: String,
     trim: true
-  }
-  international : {
+  },
+  major: {
+    type: String, trim: true
+  }, 
+  international : { 
     type: Boolean
-  }
+  },
   epic: {
     type: Boolean
   }

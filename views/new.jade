@@ -1,0 +1,41 @@
+html
+  head
+    title Create Profile
+    link(rel="stylesheet", href="/stylesheets/foundation.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+  body
+    div.panel
+      form(action="/users/new", method="POST")
+        div.row
+          label Name
+          input(type="text", placeholder = "Name", name="name")
+        div.row
+          label Email
+          input(type="email", placeholder = "Email", name="email")
+        div.row
+          label Year
+          select(name="year")
+            option(value="Freshman") Freshman
+            option(value="Sophomore") Sophomore
+            option(value="Junior") Junior
+            option(value="Senior") Senior
+        div.row
+          label University
+          input(type="text", placeholder = "University", name = "university")
+        div.row
+          label Major
+          input(type="text", placeholder = "Major", name = "major")
+        div.row
+          label International Student
+          input(type="radio", name="international", value="true")#international-true
+          label(for="international-true") Yes
+          input(type="radio", name="international", value="false")#international-false
+          label(for="international-false") No
+        div.row
+          label Epic Member
+          input(type="radio", name="epic", value="true")#epic-true
+          label(for="epic-true") Yes
+          input(type="radio", name="epic", value="false")#epic-false
+          label(for="epic-true") No
+        div.row
+          input.button.small(type="submit")

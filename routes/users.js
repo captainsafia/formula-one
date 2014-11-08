@@ -25,10 +25,10 @@ router.post('/new', function(req, res) {
       // Send to 500 page
     } 
     Resume.create({"user" : user._id, "filepicker" : data.filepicker_url}, function(error, resume) {
-      if (error)  {
-        console.log(error);
-      }
-        // Redirect to success page 
+        if (error)  {
+          console.log(error);
+        }
+        res.render('success');
       });
   });
 });
@@ -48,6 +48,7 @@ router.post('/existing', function(req, res) {
         if (error)  {
           console.log(error);
         }
+        res.render('success');
       });
     }); 
   });

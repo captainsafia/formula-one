@@ -19,13 +19,17 @@ exports.init = function(then) {
 };
 
 exports.processFieldNames = function() {
-  apps.update({},  { $rename: { 'Name': 'name',
-                                 'Email': 'email',
-                                 'Class of': 'class',
-                                 'Major': 'major',
-                                 'Please provide a link to your GitHub account': 'github',
-                                 'How did you hear about the event?': 'hearsay',
-                                 'Team Code': 'teamCode',
-                                 'What state will you be coming from?': 'state' } },
-              {multi: true});
+  apps.update({},  
+              { $rename: { 'Name': 'name',
+                           'Email': 'email',
+                           'Class of': 'class',
+                           'Major': 'major',
+                           'Please provide a link to your GitHub account': 'github',
+                           'How did you hear about the event?': 'hearsay',
+                           'Team Code': 'teamCode',
+                           'What state will you be coming from?': 'state',
+                           'Eventbrite Invitation Sent?': 'invitedToEventbrite',
+                           'Resume?': 'resume',
+                           'Did they register?' : 'isRegistered' } },
+              { multi: true });
 }

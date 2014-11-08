@@ -22,12 +22,8 @@ var schema = mongoose.Schema({
   major: {
     type: String, trim: true
   }, 
-  international : { 
-    type: Boolean
-  },
-  epic: {
-    type: Boolean
-  }
+  international : Boolean,
+  epic: Boolean
 });
 
 var User = mongoose.model('User', schema);

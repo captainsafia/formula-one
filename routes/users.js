@@ -12,7 +12,8 @@ router.post('/new', function(req, res) {
     "university" : req.body.university,
     "major" : req.body.major,
     "international" : req.body.international === 'true',
-    "epic" : req.body.epic === 'true'
+    "epic" : req.body.epic === 'true',
+    "filepicker_url" : req.body.filepicker_url
   };
   console.log(data);
   User.create(data, function(error, user) {
@@ -20,7 +21,7 @@ router.post('/new', function(req, res) {
       console.log(error);
       // Send to 500 page
     } 
-    Resume.create({"user" : user._id, "filepicker" : filepicker_url}, function(error, resume) {
+    Resume.create({"user" : user._id, "filepicker" : data.filepicker_url}, function(error, resume) {
       if (error)  {
         console.log(error);
       }

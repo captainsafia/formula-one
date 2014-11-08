@@ -38,4 +38,9 @@ html
           input(type="radio", name="epic", value="false")#epic-false
           label(for="epic-true") No
         div.row
+          input(type="filepicker", data-fp-apikey="AVRqlhXowRme6yNY2qmrdz", 
+            name="filepicker_url", data-fp-mimetypes="application/pdf", 
+            data-fp-container="modal", data-fp-services="COMPUTER,DROPBOX,GOOGLE_DRIVE,URL")
+        div.row
           input.button.small(type="submit")
+    script(type="text/javascript", src="//api.filepicker.io/v1/filepicker.js")

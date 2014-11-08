@@ -20,7 +20,8 @@ var schema = mongoose.Schema({
     trim: true
   },
   major: {
-    type: String, trim: true
+    type: String, 
+    trim: true
   }, 
   international : { 
     type: Boolean

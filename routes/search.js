@@ -6,8 +6,8 @@ router.get('/', function(req, res) {
   res.render('search');
 });
 
-router.get('/:query', function(req, res) {
-  console.log(req.params.query);
+router.post('/', function(req, res) {
+  console.log(req.body.query);
 });
 
 module.exports = router;

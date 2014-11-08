@@ -39,11 +39,11 @@ router.get('/new', function(req, res) {
 
 router.post('/existing', function(req, res) {
   var email = req.body.email;
+  var name = req.body.name;
   var filepicker_url = req.body.filepicker_url;
   MongoClient.connect(DB_URL, function(error, database) {
-    var users = database.collection('users');
-    users.findOne({"email" : email}, function(error, user) {
-      console.log(user._id);
+    var existingUsers = database.collection('wildhacks_apps');
+    existingUsers.findOne({$or: [{"email" : email}, {"name" : name}]}, function(error, user) {
       Resume.create({"user" : user._id, "filepicker" : filepicker_url}, function(error, resume) {
         if (error)  {
           console.log(error);

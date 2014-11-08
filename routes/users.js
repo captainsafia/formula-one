@@ -34,4 +34,8 @@ router.get('/new', function(req, res) {
   res.render('new');
 });
 
+router.get('/existing', function(req, res) {
+  res.render('existing');
+});
+
 module.exports = router;

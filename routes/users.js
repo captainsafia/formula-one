@@ -3,19 +3,18 @@ var router = express.Router();
 var Resume = require("../models/resume");
 var User = require("../models/user");
 
-/* GET user listing. */
-router.get('/:id', function(req, res) {
-  var id = req.params.id;
-  Resume.findOne({_id: id}).populate('user').exec(function(error, resume) {
-    res.render('user', {
-      person: resume
-    });
-  })
-});
-
 /* POST new user */
 router.post('/new', function(req, res) {
-  var data = req.body;
+  var data = {
+    "name" : req.body.name,
+    "email" : req.body.email,
+    "year" : req.body.year,
+    "university" : req.body.university,
+    "major" : req.body.major,
+    "international" : req.body.international === 'true',
+    "epic" : req.body.epic === 'true'
+  };
+  console.log(data);
   User.create(data, function(error, user) {
     if (error)  {
       console.log(error);

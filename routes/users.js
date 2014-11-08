@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var Resume = require("../models/resume");
 var User = require("../models/user");
+var MongoClient = require('mongodb').MongoClient;
+
+var DB_URL = "mongodb://localhost/formula-one";
 
 /* POST new user */
 router.post('/new', function(req, res) {
@@ -32,6 +35,22 @@ router.post('/new', function(req, res) {
 
 router.get('/new', function(req, res) {
   res.render('new');
+});
+
+router.post('/existing', function(req, res) {
+  var email = req.body.email;
+  var filepicker_url = req.body.filepicker_url;
+  MongoClient.connect(DB_URL, function(error, database) {
+    var users = database.collection('users');
+    users.findOne({"email" : email}, function(error, user) {
+      console.log(user._id);
+      Resume.create({"user" : user._id, "filepicker" : filepicker_url}, function(error, resume) {
+        if (error)  {
+          console.log(error);
+        }
+      });
+    }); 
+  });
 });
 
 router.get('/existing', function(req, res) {

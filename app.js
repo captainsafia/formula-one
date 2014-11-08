@@ -31,6 +31,12 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/search', search);
 
+// process wildhacks app data
+var processor = require('./models/wildhacks_apps.js');
+processor.init(function(e, c) {
+  processor.processFieldNames();
+});
+
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

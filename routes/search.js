@@ -7,7 +7,23 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-  console.log(req.body.query);
+  var searchData = {
+    major: req.body.major,
+    year: req.body.year,
+    international : req.body.international == 'yes'
+  };
+  Resume.find({major: searchData.major, 
+              year : searchData.year, 
+              international : searchData.international})
+        .populate('user')
+        .exec(function(error, resume) {
+          if (error)  {
+            console.log(error);
+          }
+          res.render('results', {
+            'results' : resume
+          });
+        })
 });
 
 module.exports = router;

@@ -2,6 +2,24 @@ html
   head
     title Search Resumes
     link(rel="stylesheet", href="/stylesheets/foundation.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
 
   body
-    h1 Browse Resumes
+    div.panel
+      form(action="/search", method="POST")
+        div.row
+          div.large-6.columns
+            input(type = "text", placeholder = "Major", name = "major")
+          div.large-6.columns
+            input(type = "text", placeholder = "Year", name = "year")
+        div.row
+          div.large-6.columns
+            label Visa Sponsorship Required?
+            input(type = "radio", name = "international", value = "yes", id="international-yes") 
+            label(for = "international-yes") Yes
+            input(type = "radio", name = "international", value = "no", id="international-no")
+            label(for = "international-no") No
+          div.large-6.columns
+            input.button.small(type = "submit", value = "Search")
+    script(type="text/javascript", src="/javascripts/vendor/jquery.js")
+    script(type="text/javascript", src="/javascripts/script.js")

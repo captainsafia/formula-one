@@ -25,6 +25,22 @@ html
         div.row
           label Major
           input(type="text", placeholder = "Major", name = "major")
+        div.row.expirence
+          label Expirence
+          input(type="text", placeholder = "Company", name = "company")
+          input(type="text", placeholder = "Position", name = "position")
+          div.large-6.columns
+            input(type="text", placeholder = "09/23/2012", name = "start_date_work")
+          div.large-6.columns
+            input(type="text", placeholder = "09/24/2014", name = "end_date_work")
+          textarea(placeholder = "Summary", name = "summary")
+        div.row.education
+          label Education
+          input(type="text", placeholder = "Institution", name = "institution")
+          div.large-6.columns
+            input(type="text", placeholder = "2014", name = "start_date_edu")
+          div.large-6.columns
+            input(type="text", placeholder = "2018", name = "end_date_edu")
         div.row
           label International Student
           input(type="radio", name="international", value="true")#international-true

@@ -1,20 +1,26 @@
-html
+html(ng-app="resume-form")
   head
     title Create Profile
     link(rel="stylesheet", href="/stylesheets/foundation.min.css")
-    link(rel="stylesheet", href="/stylesheets/style.css")
-  body
     div.panel
-      form(action="/users/new", method="POST")
+      form(action="/users/new", method="POST", name="newUserForm", novalidate, ng-submit="newUserForm.$valid"
         div.row
           label Name
-          input(type="text", placeholder = "Name", name="name")
+          input(type="text", 
+                placeholder = "Name", 
+                name="name", 
+                ng-model="user.name", 
+                required)
         div.row
           label Email
-          input(type="email", placeholder = "Email", name="email")
+          input(type="email", 
+                placeholder = "Email", 
+                name="email", 
+                ng-model="user.email", 
+                required)
         div.row
           label Year
-          select(name="year")
+          select(name="year", ng-model = "user.year"
             option(value="Freshman") Freshman
             option(value="Sophomore") Sophomore
             option(value="Junior") Junior
@@ -30,17 +36,18 @@ html
           input(type="text", placeholder = "Company", name = "company")
           input(type="text", placeholder = "Position", name = "position")
           div.large-6.columns
-            input(type="text", placeholder = "09/23/2012", name = "start_date_work")
+            input(type="date", placeholder = "09/23/2012", name = "start_date_work")
           div.large-6.columns
-            input(type="text", placeholder = "09/24/2014", name = "end_date_work")
+            input(type="date", placeholder = "09/24/2014", name = "end_date_work")
           textarea(placeholder = "Summary", name = "summary")
+          button.button.small(data-ng-click="clone()") + 
         div.row.education
           label Education
           input(type="text", placeholder = "Institution", name = "institution")
           div.large-6.columns
-            input(type="text", placeholder = "2014", name = "start_date_edu")
+            input(type="number", placeholder = "2014", name = "start_date_edu")
           div.large-6.columns
-            input(type="text", placeholder = "2018", name = "end_date_edu")
+            input(type="number", placeholder = "2018", name = "end_date_edu")
         div.row
           label International Student
           input(type="radio", name="international", value="true")#international-true
@@ -60,3 +67,6 @@ html
         div.row
           input.button.small(type="submit")
     script(type="text/javascript", src="//api.filepicker.io/v1/filepicker.js")
+    script(type="text/javascript", src="/javascripts/angular.min.js")
+    script(type="text/javascript", src="/javascripts/app.js")
+

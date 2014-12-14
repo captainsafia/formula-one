@@ -15,6 +15,14 @@ var schema = mongoose.Schema({
   education: [{
     institution: String,
     major: String,
+    year: {
+      type: String
+      enum: ["Freshman", 
+              "Sophomore", 
+              "Junior", 
+              "Senior", 
+              "Graduate Student"]
+    }
     startDate: Date,
     endDate: Date,
     GPA: Number
@@ -32,13 +40,21 @@ var schema = mongoose.Schema({
   }],
   awards: [{
     title: String, 
-    date: String, 
+    date: Date, 
     awarder: String, 
     summary: String
   }],
   languages: [{
     language: String,
-    fluency: String
+    fluency: {
+      type: String,
+      enum: ["No Practical Proficiency", 
+              "Elementary Proficiency", 
+              "Limited Working Proficiency", 
+              "Minimum Working Proficiency",
+              "Full Professional Proficiency",
+              "Native or Bilingual Speaker"]
+    }
   }]
   filepicker: {
     type: String,

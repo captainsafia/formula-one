@@ -19,16 +19,27 @@ var schema = mongoose.Schema({
     endDate: Date,
     GPA: Number
   }],
+  volunteer: [{
+    organization: String,
+    position: String,
+    startDate: Date,
+    endDate: Date,
+    summary: String
+  }]
   skills: [{
     skill: String,
     level: Number
   }],
-  title: [{
+  awards: [{
     title: String, 
     date: String, 
     awarder: String, 
     summary: String
   }],
+  languages: [{
+    language: String,
+    fluency: String
+  }]
   filepicker: {
     type: String,
     trim: true

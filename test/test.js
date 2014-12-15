@@ -5,11 +5,22 @@ var mockgoose = require('mockgoose');
 mockgoose(mongoose);
 
 var Resume = require("../models/resume");
+var User = require("../models/user");
 var searchByMajor = require("../routes/search").searchByMajor;
 
 beforeEach(function(done) {
 	mockgoose.reset();
+	var john = User.create({
+		name: "John Doe",
+		email: "johndoe@email.com",
+		year: "Freshman",
+		university: "Northwestern University",
+		major: "Computer Science",
+		international: false,
+		epic: false,
+	});
 	Resume.create({
+		user: john._id, 
 		education: [{
 			institution: "Northwestern University",
 			major: "Computer Science",

@@ -12,9 +12,7 @@ var searchByMajor = function(major) {
           if (error) {
             console.log(error);
           }
-          res.render('results', {
-            'results' : resume
-          })
+          return resume;
         });
 }
 

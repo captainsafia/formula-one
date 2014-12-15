@@ -4,7 +4,7 @@ var Resume = require("../models/resume");
 
 var searchByMajor = function(major) {
   var searchQuery = {
-    education.major: major
+    "education.major" : major
   };
   Resume.find(searchQuery)
         .populate('user')

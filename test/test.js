@@ -39,17 +39,43 @@ beforeEach(function(done) {
 
 describe("Resume", function() {
 	describe("#searchByMajor", function() {
-		it("should return an empty JSON object if nothing is found", function(done) {
+		it("should return an empty array if nothing is found", function(done) {
 			searchByMajor("Clowning", function(resume) {
 				expect(resume).to.be.empty;
 				done();
 			})
 		});
-		it("should return a JSON object if something is found", function (done) {
+		it("should return a array if something is found", function (done) {
 			searchByMajor("Computer Science", function(resume) {
 				expect(resume).to.not.be.empty;
 				done();
 			})
 		})
+	});
+	describe("#searchByName", function() {
+		it("should return an empty array if nothing is found", function(done) {
+			searchByName("Steve Smith", function(resume) {
+				expect(resume).to.be.empty;
+				done();
+			});
+		});
+		it("should return an array if something is found", function(done) {
+			searchByName("John Doe", function(resume) {
+				expect(resume).to.not.be.empty;
+				done();
+			});
+		});
+		it("should return an array if only the first name is given", function(done) {
+			searchByName("John", function(resume) {
+				expect(resume).to.not.be.empty;
+				done();
+			});
+		});
+		it("should return an array if only the last name is given", function(done) {
+			searchByName("Doe", function(resume) {
+				expect(resume).to.not.be.empty;
+				done();
+			});
+		});
 	});
 });

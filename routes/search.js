@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Resume = require("../models/resume");
 
-var searchByMajor = function(major) {
+var searchByMajor = function(major, callback) {
   var searchQuery = {
     "education.major" : major
   };
@@ -12,7 +12,7 @@ var searchByMajor = function(major) {
           if (error) {
             console.log(error);
           }
-          return resume;
+          callback(resume);
         });
 }
 

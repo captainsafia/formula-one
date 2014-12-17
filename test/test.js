@@ -39,11 +39,17 @@ beforeEach(function(done) {
 
 describe("Resume", function() {
 	describe("#searchByMajor", function() {
-		it("should return an empty JSON object if nothing is found", function() {
-			expect(searchByMajor("Clowning")).to.not.be.ok();
+		it("should return an empty JSON object if nothing is found", function(done) {
+			searchByMajor("Clowning", function(resume) {
+				expect(resume).to.be.empty;
+				done();
+			})
 		});
-		it("should return a JSON object if something is found", function () {
-			expect(searchByMajor("Computer Science")).to.be.ok();
+		it("should return a JSON object if something is found", function (done) {
+			searchByMajor("Computer Science", function(resume) {
+				expect(resume).to.not.be.empty;
+				done();
+			})
 		})
 	});
 });

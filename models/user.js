@@ -28,6 +28,10 @@ var schema = mongoose.Schema({
   },
   epic: {
     type: Boolean
+  },
+  resume: {
+    type:  mongoose.Schema.Types.ObjectId,
+    ref: 'Resume'
   }
 });
 

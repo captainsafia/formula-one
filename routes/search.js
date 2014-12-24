@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Resume = require("../models/resume");
+var User = require("../models/user");
 
 var searchByMajor = function(major, callback) {
   var searchQuery = {
@@ -13,6 +14,17 @@ var searchByMajor = function(major, callback) {
             console.log(error);
           }
           callback(resume);
+        });
+}
+
+var searchByName = function(person, callback) {
+  User.find({name: {$regex: person}})
+        .populate("resume")
+        .exec(function(error, resumes) {
+            if (error) {
+              console.log(error);
+            }
+            callback(resumes);
         });
 }
 
@@ -40,5 +52,6 @@ router.post('/', function(req, res) {
 
 module.exports = {
   "router" : router,
-  "searchByMajor": searchByMajor
+  "searchByMajor": searchByMajor,
+  "searchByName": searchByName
 };

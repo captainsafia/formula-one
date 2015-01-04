@@ -8,6 +8,7 @@ var Resume = require("../models/resume");
 var User = require("../models/user");
 var searchByMajor = require("../routes/search").searchByMajor;
 var searchByName = require("../routes/search").searchByName;
+var searchBySchool = require("../routes/search").searchBySchool;
 
 beforeEach(function(done) {
 	mockgoose.reset();
@@ -85,4 +86,18 @@ beforeEach(function(done) {
 			});
 		});
 	});
+  describe("#searchBySchool", function() {
+    it("should return an empty array if nothing is found", function(done) {
+      searchBySchool("UIC", function(resume) {
+        expect(resume).to.be.empty();
+        done();
+      });
+    });
+    it("should return an array if something is found", function(done) {
+      searchBySchool("Northwestern University", function(resume) {
+        expect(resume).to.not.be.empty();
+        done();
+      });
+    });
+  });
 });

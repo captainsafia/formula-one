@@ -3,23 +3,24 @@ html
     title Search Resumes
     link(rel="stylesheet", href="/stylesheets/foundation.min.css")
     link(rel="stylesheet", href="/stylesheets/style.css")
+    script(src="/javascripts/angular.min.js")
+    script(type="text/javascript", src="/javascripts/angular/talent-portal.js")
 
   body
-    div.panel
-      form(action="/search", method="POST")
+    div.panel(ng-app="talent-portal", ng-controller="searchController")
+      form(ng-submit="submitSearch()")
         div.row
-          div.large-6.columns
-            input(type = "text", placeholder = "Major", name = "major")
-          div.large-6.columns
-            input(type = "text", placeholder = "Year", name = "year")
+          div.small-12.columns
+            input(type="text", placeholder="Name", ng-model="query.name")
         div.row
-          div.large-6.columns
-            label Visa Sponsorship Required?
-            input(type = "radio", name = "international", value = "yes", id="international-yes") 
-            label(for = "international-yes") Yes
-            input(type = "radio", name = "international", value = "no", id="international-no")
-            label(for = "international-no") No
-          div.large-6.columns
-            input.button.small(type = "submit", value = "Search")
+          div.small-6.columns
+            input(type="text", placeholder="Major", ng-model="query.major")
+          div.small-6.columns
+            input(type="text", placeholder="Year", ng-model="query.year")
+        div.row
+          div.small-8.columns
+            label.small-8.columns Visa Sponsorship Required?
+            input.small-4.columns(type="checkbox", ng-model="query.visaRequired")
+          div.small-4.columns
+            input.button.small.right(type="submit", value="Search")
     script(type="text/javascript", src="/javascripts/vendor/jquery.js")
-    script(type="text/javascript", src="/javascripts/script.js")
